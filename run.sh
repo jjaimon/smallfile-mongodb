@@ -16,6 +16,10 @@ if [ "$OPLOG_SIZE" != "" ]; then
     cmd="$cmd --oplogSize $OPLOG_SIZE"
 fi
 
+if [ ! -z "$REPLSET" ]; then
+    cmd="$cmd --replSet $REPLSET --bind_ip_all"
+fi
+
 $cmd &
 
 if [ ! -f /data/db/.mongodb_password_set ]; then
